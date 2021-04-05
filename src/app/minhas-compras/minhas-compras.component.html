@@ -1,0 +1,53 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+ 
+        <form novalidate #form="ngForm">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-shopping-cart"></i> Compras efetuadas
+              </h2>
+            </div>
+          </div>         
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="lead">Itens do Pedido:</p>
+            </div>
+            <div class="col-xs-12 table-responsive">
+
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th class="text-center">Quantidade</th>
+                  <th>Item</th>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                  <th class="text-right">Subtotal</th>
+                  <th class="text-right"></th>
+                </tr>
+                </thead>
+                <tbody> 
+                <tr *ngFor="let minhaCompra of minhasCompras">
+                  <td class="text-center">
+                    {{minhaCompra.quantidade}}
+                  </td>
+                  <td>{{minhaCompra.produto.nome}}</td>
+                  <td>{{minhaCompra.produto.descricao}}</td>
+                  <td>{{minhaCompra.produto.valor | currency:'BRL':true}}</td>
+                  <td class="text-right">{{(minhaCompra.produto.valor*minhaCompra.quantidade) | currency:'BRL':true}}</td> 
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+            
+        </form>
+ 
+
+    </section>
+</section>

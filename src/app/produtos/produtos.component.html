@@ -1,0 +1,25 @@
+<section class="content-header">
+  <h1>
+
+  </h1>
+</section>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box box-solid">
+      <div class="box-header with-border">
+        <i class="fa fa-home"></i>
+
+        <h3 class="box-title">Cesta de compras</h3><span class="pull-right"></span>
+      </div>  
+    </div>
+  </div>
+  <!-- /.col-xs-12 -->
+
+</div>
+<section class="content">
+    <div class="row" >
+      <app-produto *ngFor="let produto of produtos" [produto]="produto" (produtoAdicionado)="carrinhoCompras.addProduto($event)" ></app-produto>
+      <app-carrinho-compras #carrinhoCompras ></app-carrinho-compras>
+    </div>
+</section>

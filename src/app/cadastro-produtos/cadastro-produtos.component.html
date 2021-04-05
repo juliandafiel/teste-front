@@ -1,0 +1,103 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+ 
+        <form novalidate #form="ngForm">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-user"></i> Cadastro de Produtos
+              </h2>
+            </div>
+          </div>                
+
+          <div class="row invoice-info">
+            <div class="col-sm-6 col-xs-12">
+              <div class="form-group">
+                <app-input errorMessage="Campo obrigatório" label="Nome">
+                  <input class="form-control" name="nome" required ngModel autocomplete="off" placeholder="Nome"/>
+                </app-input>
+              </div>
+            </div>
+ 
+            <div class="col-sm-6 col-xs-12">
+              <div class="form-group">
+                <app-input errorMessage="Campo obrigatório" label="Descrição">
+                  <input class="form-control" name="descricao" required ngModel autocomplete="off" placeholder="Descrição"/>
+                </app-input>
+              </div>
+            </div>
+ 
+            <div class="col-sm-6 col-xs-12">
+              <div class="form-group">
+                <app-input errorMessage="Campo obrigatório" label="Imagem">
+                  <input type="file"  class="form-control"  name="imagem" required ngModel autocomplete="off" accept="image/png, image/jpeg" placeholder="Imagem">
+                </app-input>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="form-group">
+                <app-input errorMessage="Campo obrigatório e apenas números" label="Valor">
+                  <input class="form-control" name="valor" required ngModel autocomplete="off" placeholder="Valor"/>
+                </app-input>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="form-group">
+                <app-input errorMessage="Campo obrigatório e apenas números" label="Quantidade Estoque">
+                  <input class="form-control" name="qtdEstoque" required ngModel autocomplete="off" placeholder="Quantidade Estoque"/>
+                </app-input>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <button (click)="cadastrarProduto(form.value)" [disabled]="!form.valid" class="btn btn-success pull-right">
+                  <i class="fa fa-credit-card"></i> Cadastrar
+              </button>
+            </div>
+  
+          </div> 
+
+
+
+          <div class="row"> 
+            <div class="col-xs-12 table-responsive">
+
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th class="text-center">Qtd Estoque</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th class="text-right">Valor</th>
+                  <th class="text-right"></th>
+                </tr>
+                </thead>
+                <tbody> 
+                <tr *ngFor="let produto of produtos">
+                  <td class="text-center">
+                    {{produto.qtdEstoque}}
+                  </td>
+                  <td>{{produto.nome}}</td>
+
+                  <td>{{produto.descricao}}</td>
+                  <td class="text-right">{{produto.valor | currency:'BRL':true}}</td>
+                  <td class="text-right">
+                    <button (click)="removerProduto(produto)" class="btn btn-sm danger "><i class="fa fa-remove"></i></button>
+                    <button (click)="editarProduto(produto)" class="btn btn-sm danger "><i class="fa fa-edit"></i></button>
+                  </td> 
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.col -->
+          </div> 
+
+        </form>
+
+        
+
+    </section>
+</section>
